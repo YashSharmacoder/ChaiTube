@@ -1,19 +1,19 @@
 import { Router } from "express";
 import { getAllVideos, getVideoById, publishAVideo, deleteVideo, updateVideo, togglePublishStatus } from "../controllers/video.controller.js";
-import { verifyJWT } from "../middlewares/auth.middleware.js"
+import { verifyJWT, verifyJWTOptional } from "../middlewares/auth.middleware.js"
 import { upload } from "../middlewares/multer.middlewares.js";
 
 
 const router = Router();
 
 router.route("/getAllVideos").get(getAllVideos)
-
+router.route("/:videoId").get(verifyJWTOptional,getVideoById)
 
 
 router.use(verifyJWT)
 //secure  routes
 
-router.route("/:videoId").get(getVideoById)
+
 router.route("/uploadvideo").post(upload.fields([
     {
         name: "videoFile",
