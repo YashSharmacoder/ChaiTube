@@ -11,7 +11,7 @@ import cors from "cors";
 app.use(
   cors({
     origin: [
-      "https://yashtube.vercel.app", // Aapka live Vercel frontend URL
+      "https://chai-tube-theta.vercel.app", // Aapka live Vercel frontend URL
       "http://localhost:5173",       // Local testing ke liye
     ],
     credentials: true, // Agar cookies ya authorization headers use kar rahe hain
